@@ -28,6 +28,7 @@
 .header{
     text-align: center;
     padding: 40px;
+    font-family:Sometype Mono, monospace ;
     background-image: url(../img/wall.png);
 }
 body{
@@ -55,13 +56,14 @@ body{
 /* Fine hover */
 
 .card-image{
-    height: 250px;
+    height: 80%;
     margin-bottom: 20px;
 }
 .card-image img{
     width: 100%;
 }
 .card-text{
+    font-family: Edu Tas Beginner, sans-serif;
 }
 .pin{
     position: absolute;
@@ -92,4 +94,17 @@ body{
 }
 .btn{
     padding: 10px 20px ;
+}
+
+@media screen and (max-width: 900px){
+    .col{
+    width: calc((100% - (var(--gap) * 2)) / 2 );
+
+}
+}
+@media screen and (max-width: 700px){
+    .col{
+    width: calc((100% - (var(--gap) * 1)) / 1 );
+
+}
 }

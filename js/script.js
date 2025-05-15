@@ -11,14 +11,8 @@ axios.get(getApi).then((resp) => {
     const photoArr = resp.data
     PrintCard(photoArr)
     const cardsImage = document.querySelectorAll(".card .card-image")
-      console.log(cardsImage)
-    cardsImage.forEach((singleCard) => {
-        singleCard.addEventListener("click", function(){
-            console.log("card clicke" , singleCard.innerHTML)
-            bigPic.classList.remove("big-pic-none")
-            imageBig.innerHTML = singleCard.innerHTML
-        })
-    })
+    // Render dell'immagine Grande
+    renderBigImage(cardsImage)
 })
 
 
@@ -42,7 +36,7 @@ function createTemplate(singleElement) {
                         </div>
                     </div>
                 </div>`
-    
+
 }
 
 // Funzione che mi stampa la card
@@ -58,11 +52,14 @@ function PrintCard(elemento) {
 
 // Eventi sul bottone
 btn.addEventListener("click", function () {
-    console.log("click")
     bigPic.classList.add("big-pic-none")
 })
 
-// Render dell'imagine grande
-// function renderBigImage(){
-
-// }
+function renderBigImage(arr){
+    arr.forEach((singleCard) => {
+        singleCard.addEventListener("click", function () {
+            bigPic.classList.remove("big-pic-none")
+            imageBig.innerHTML = singleCard.innerHTML
+        })
+    })
+}
