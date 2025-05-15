@@ -22,6 +22,7 @@
 .col{
     width: calc((100% - (var(--gap) * 3)) / 3 )
 }
+
 /* Fine utilitys */
 
 .header{
@@ -38,12 +39,22 @@ body{
     background-color: white;
     align-items: center;
     margin-top: 30px;
+    margin-bottom: 30px;
     padding: 30px 15px;
     position: relative;
 }
+
+/* Hover della card */
+.col:hover:not(.card-image:hover .card-text:hover){
+        transform: rotate(10deg);
+        z-index: 9999;
+        .pin{
+            display: none;
+        }
+}
+/* Fine hover */
+
 .card-image{
-    background-color: green;
-    width: 250px;
     height: 250px;
     margin-bottom: 20px;
 }
@@ -51,9 +62,34 @@ body{
     width: 100%;
 }
 .card-text{
-    height: 100px;
 }
 .pin{
     position: absolute;
     top: -10px;
+}
+.pin img{
+    width: 30px;
+}
+
+/* Immagine grande centrale */
+.big-pic{
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    position: fixed;
+    z-index: 999999;
+    height: 100vh;
+    width: 100vw;
+}
+.big-pic-none{
+    display: none;
+}
+.big-pic img{
+    width: 600px;
+}
+.btn{
+    padding: 10px 20px ;
 }

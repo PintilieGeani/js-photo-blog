@@ -1,6 +1,12 @@
+// Raccolta dati
 const getApi = "https://lanciweb.github.io/demo/api/pictures/"
 let card = document.getElementById("card")
 console.log(card)
+let bigPic = document.getElementById("big-pic")
+console.log(bigPic)
+let btn = document.getElementById("btn")
+
+// Chiamata ajax
 axios.get(getApi).then((resp) =>{
     console.log(resp)
     const photoArr = resp.data
@@ -9,9 +15,10 @@ axios.get(getApi).then((resp) =>{
         console.log(curElem)
        createCard(curElem)
     });
+    
 })
 
-
+// Funzioni
 function createCard(elemento){
      const {title, date, url} = elemento
     card.innerHTML += `<div class="col">
@@ -27,4 +34,16 @@ function createCard(elemento){
                         </div>
                     </div>
                 </div>`
+}
+
+function renderBigPic(elemento){
+    const {title, date, url} = elemento
+    bigPic.classList.remove("big-pic-none")
+    bigPic.innerHTML = ` <div>
+                <button id="btn" class="btn">Chiudi</button>
+            </div>
+            <div>
+                <img src=${url} alt=${title}>
+            </div>
+        </div>`
 }
