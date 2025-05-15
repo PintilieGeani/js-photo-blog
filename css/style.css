@@ -1,40 +1,46 @@
 /* RESET */
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-:root{
+
+:root {
     --gap: 10px;
 }
 
 /* Utilitys */
-.container{
+.container {
     width: 80%;
     margin: 0 auto;
     max-width: 900px;
 }
-.row{
+
+.row {
     display: flex;
     flex-wrap: wrap;
     gap: 10px
 }
-.col{
-    width: calc((100% - (var(--gap) * 3)) / 3 )
+
+.col {
+    width: calc((100% - (var(--gap) * 3)) / 3)
 }
 
 /* Fine utilitys */
 
-.header{
+.header {
     text-align: center;
     padding: 40px;
-    font-family:Sometype Mono, monospace ;
+    font-family: Edu Tas Beginner, sans-serif;
+    font-size: 2.5rem;
     background-image: url(../img/wall.png);
 }
-body{
+
+body {
     background-image: url(../img/cork.png);
 }
-.card{
+
+.card {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -46,35 +52,41 @@ body{
 }
 
 /* Hover della card */
-.col:hover:not(.card-image:hover .card-text:hover){
-        transform: rotate(10deg);
-        z-index: 9999;
-        .pin{
-            display: none;
-        }
+.col:hover:not(.card-image:hover .card-text:hover) {
+    transform: rotate(10deg);
+    z-index: 9999;
+
+    .pin {
+        display: none;
+    }
 }
+
 /* Fine hover */
 
-.card-image{
+.card-image {
     height: 80%;
     margin-bottom: 20px;
 }
-.card-image img{
+
+.card-image img {
     width: 100%;
 }
-.card-text{
+
+.card-text {
     font-family: Edu Tas Beginner, sans-serif;
 }
-.pin{
+
+.pin {
     position: absolute;
     top: -10px;
 }
-.pin img{
+
+.pin img {
     width: 30px;
 }
 
 /* Immagine grande centrale */
-.big-pic{
+.big-pic {
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
@@ -86,25 +98,37 @@ body{
     height: 100vh;
     width: 100vw;
 }
-.big-pic-none{
+
+.big-pic-none {
     display: none;
 }
-.big-pic img{
+
+.big-pic img {
     width: 600px;
 }
-.btn{
-    padding: 10px 20px ;
+
+.btn {
+    padding: 10px 20px;
 }
 
-@media screen and (max-width: 900px){
-    .col{
-    width: calc((100% - (var(--gap) * 2)) / 2 );
 
-}
-}
-@media screen and (max-width: 700px){
-    .col{
-    width: calc((100% - (var(--gap) * 1)) / 1 );
+/* Media query */
+@media screen and (max-width: 900px) {
+    .col {
+        width: calc((100% - (var(--gap) * 2)) / 2);
+    }
 
+    .header {
+        font-size: 2rem;
+    }
 }
+
+@media screen and (max-width: 700px) {
+    .col {
+        width: calc((100% - (var(--gap) * 1)) / 1);
+    }
+
+    .header {
+        font-size: 1.5rem;
+    }
 }
