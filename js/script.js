@@ -1,27 +1,35 @@
 // Raccolta dati
 const getApi = "https://lanciweb.github.io/demo/api/pictures/"
-let card = document.getElementById("card")
-console.log(card)
 let bigPic = document.getElementById("big-pic")
 console.log(bigPic)
 let btn = document.getElementById("btn")
+let imageBig = document.getElementById("image-big")
+console.log(imageBig)
 
 // Chiamata ajax
-axios.get(getApi).then((resp) =>{
-    console.log(resp)
+axios.get(getApi).then((resp) => {
     const photoArr = resp.data
-    console.log(photoArr)  
-    photoArr.forEach(curElem => {
-        console.log(curElem)
-       createCard(curElem)
-    });
-    
+    PrintCard(photoArr)
+    const cardsImage = document.querySelectorAll(".card .card-image")
+      console.log(cardsImage)
+    cardsImage.forEach((singleCard) => {
+        singleCard.addEventListener("click", function(){
+            console.log("card clicke" , singleCard.innerHTML)
+            bigPic.classList.remove("big-pic-none")
+            imageBig.innerHTML = singleCard.innerHTML
+        })
+    })
 })
 
+
+
+
+
 // Funzioni
-function createCard(elemento){
-     const {title, date, url} = elemento
-    card.innerHTML += `<div class="col">
+// Funzione che mi crea la card
+function createTemplate(singleElement) {
+    const { title, url } = singleElement
+    return `<div class="col">
                     <div class="card">
                         <div class="pin">
                             <img src="./img/pin.svg" alt="pin">
@@ -34,16 +42,27 @@ function createCard(elemento){
                         </div>
                     </div>
                 </div>`
+    
 }
 
-function renderBigPic(elemento){
-    const {title, date, url} = elemento
-    bigPic.classList.remove("big-pic-none")
-    bigPic.innerHTML = ` <div>
-                <button id="btn" class="btn">Chiudi</button>
-            </div>
-            <div>
-                <img src=${url} alt=${title}>
-            </div>
-        </div>`
+// Funzione che mi stampa la card
+function PrintCard(elemento) {
+    const rowElem = document.getElementById("row")
+    let template = ""
+    elemento.forEach((curElem) => {
+        template += createTemplate(curElem)
+        rowElem.innerHTML = template
+    })
+
 }
+
+// Eventi sul bottone
+btn.addEventListener("click", function () {
+    console.log("click")
+    bigPic.classList.add("big-pic-none")
+})
+
+// Render dell'imagine grande
+// function renderBigImage(){
+
+// }
